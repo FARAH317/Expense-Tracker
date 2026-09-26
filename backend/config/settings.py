@@ -121,8 +121,13 @@ SIMPLE_JWT = {
 
 # --- CORS ----------------------------------------------------------------
 # Dev origins are always allowed; add your deployed frontend URL via env var
+
 # (comma-separated) once it exists, e.g. CORS_EXTRA_ORIGINS=https://ledger.vercel.app
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ] + [o for o in os.environ.get("CORS_EXTRA_ORIGINS", "").split(",") if o]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
+]
